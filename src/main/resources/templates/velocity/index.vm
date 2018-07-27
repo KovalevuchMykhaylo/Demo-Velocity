@@ -1,0 +1,13 @@
+<html>
+<head>
+
+</head>
+<body>
+<h1>Welcome to velocity</h1>
+<ul>
+    #foreach( $user in $users )
+        <li>$user.name $user.password</li>
+    #end
+</ul>
+</body>
+</html>
