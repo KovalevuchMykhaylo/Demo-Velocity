@@ -1,6 +1,6 @@
 package com.controllers;
 
-import com.core.services.UserService;
+import com.core.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
     @Autowired
-    private UserService userService;
+    private ItemService itemService;
 
     @RequestMapping("/")
     public String index(Model model){
-         model.addAttribute("users", userService.findAll());
+         model.addAttribute("items", itemService.findAll());
         return "index";
     }
 }

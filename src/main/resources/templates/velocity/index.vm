@@ -5,8 +5,8 @@
 <body>
 <h1>Welcome to velocity</h1>
 <ul>
-    #foreach( $user in $users )
-        <li>$user.name $user.password</li>
+    #foreach( $item in $items )
+        <li>$item.name $item.price</li>
     #end
 </ul>
 </body>

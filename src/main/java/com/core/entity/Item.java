@@ -4,16 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 
 @Entity
-public class User {
+public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-    private String email;   // email is equivalent to loguin in this case
-    private String password;
+    private BigDecimal price;
 
     public Long getId() {
         return id;
@@ -31,19 +31,11 @@ public class User {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }
