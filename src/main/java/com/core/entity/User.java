@@ -1,13 +1,9 @@
-package org.springmodules.mailing.core.entity;
+package com.core.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-/**
- * Created by andresmerida on 3/3/2016.
- */
 
 @Entity
 public class User {
