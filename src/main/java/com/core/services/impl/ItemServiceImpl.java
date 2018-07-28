@@ -21,7 +21,12 @@ public class ItemServiceImpl implements ItemService {
     private VelocityEngine velocityEngine;
 
     @Autowired
-    ItemRepository itemRepository;
+    private ItemRepository itemRepository;
+
+    @Override
+    public void save(Item item) {
+        itemRepository.save(item);
+    }
 
     @Override
     public List<Item> findAll() {
