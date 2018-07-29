@@ -16,15 +16,21 @@ public class IndexController {
     @Autowired
     private ItemService itemService;
 
+    @Autowired
+    public IndexController(ItemService itemService) {
+        this.itemService = itemService;
+    }
+
     @RequestMapping("/")
-    public String index(Model model){
-         model.addAttribute("items", itemService.findAll());
+    public String index(Model model) {
+        model.addAttribute("items", itemService.findAll());
         return "index";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String postIndex(){
+    public String postIndex() {
         logger.info("Post form");
         return "redirect:/";
     }
 }
+
