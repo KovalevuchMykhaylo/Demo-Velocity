@@ -2,6 +2,22 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script>
+        function validateForm() {
+            var x = document.forms["myForm"]["name"].value;
+            if (x.length < 3) {
+                var z = document.getElementById("nameError");
+                z.style.display = "block";
+                return false;
+            }
+
+            var y = document.forms["myForm"]["price"].value;
+            if (y == "") {
+                alert("Price must be filled out");
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
 <h1>Welcome to velocity</h1>
@@ -18,6 +34,17 @@
         <div class="col-md-6">
             <h1>Clo md 6</h1>
         </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="row">
+        <form name="myForm" action="/"
+              onsubmit="return validateForm()" method="post">
+            <p id="nameError" style="display:none">Min length 3</p>
+            Name: <input type="text" name="name" required>
+            Price: <input type="number" name="price" min="1" max="1000000" step="0.01" required>
+            <input type="submit" value="Submit">
+        </form>
     </div>
 </div>
 </body>
