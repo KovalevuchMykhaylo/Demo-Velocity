@@ -4,7 +4,7 @@ import com.core.entity.Item;
 import com.core.repositories.ItemRepository;
 import com.core.services.ItemService;
 import org.apache.log4j.Logger;
-import org.apache.velocity.app.VelocityEngine;
+//import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +17,8 @@ public class ItemServiceImpl implements ItemService {
 
     private final static Logger logger = Logger.getLogger(ItemServiceImpl.class);
 
-    @Autowired
-    private VelocityEngine velocityEngine;
+//    @Autowired
+//    private VelocityEngine velocityEngine;
 
     @Autowired
     private ItemRepository itemRepository;

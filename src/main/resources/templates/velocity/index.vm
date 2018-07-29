@@ -19,6 +19,31 @@
             }
         }
     </script>
+    <script>
+        function sendPostForm() {
+            var xhttp = new XMLHttpRequest();
+            var url = "/restForm";
+            // var itemName = document.forms["restForm"]["name"].value;;
+            // console.log("Item name: " + itemName)
+            // var itemPrice = document.forms["restForm"]["peice"].value;
+            // console.log("Item price: " + itemPrice)
+
+            xhttp.open("POST", url, true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("name=" + "&price=");
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log("Ok")
+                    document.getElementById("responseText").innerHTML = this.responseText;
+                }
+
+                if (this.readyState == 4 && this.status == 400) {
+                    console.log("Error");
+                    document.getElementById("responseText").innerHTML = this.responseText;
+                }
+            };
+        }
+    </script>
 </head>
 <body class="container-fluid">
 <h1>Welcome to velocity</h1>
@@ -46,6 +71,18 @@
             Price: <input type="number" name="price" min="1" max="1000000" step="0.01" required>
             <input type="submit" value="Submit">
         </form>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="row">
+        <p id="responseText"></p>
+        <div>
+            <form name="restForm">
+                Name: <input type="text" name="name" id="restFormItemName">
+                Price: <input type="number" name="price" id="restFormItemPrice">
+                <button onclick="sendPostForm()">Send</button>
+            </form>
+        </div>
     </div>
 </div>
 </body>
