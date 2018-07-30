@@ -21,15 +21,11 @@ public class PostFormValidator implements Validator {
         Item item = (Item)o;
 
         if (item.getName() == null) {
-            ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "Can`t be empty");
-        }
-
-        if (item.getName().equals("")) {
-            ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "Can`t be empty");
+            ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "Name can`t be empty");
         }
 
         if (item.getPrice() == null) {
-            ValidationUtils.rejectIfEmptyOrWhitespace(errors, "price", "Can`t be empty");
+            ValidationUtils.rejectIfEmptyOrWhitespace(errors, "price", "Price can`t be empty");
         }
 
         if(item.getName().length()<4){

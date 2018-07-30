@@ -15,3 +15,22 @@
     color: red;
     box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.6);
 }
+
+input:required {
+    box-shadow: 4px 4px 20px rgba(200, 0, 0, 0.85);
+}
+
+input:required:focus {
+    border: 1px solid red;
+    outline: none;
+}
+
+input:required:hover {
+    opacity: 1;
+}
+
+.errorsStyle {
+    color: red;
+    text-align: left;
+    margin-top: 1rem;
+}

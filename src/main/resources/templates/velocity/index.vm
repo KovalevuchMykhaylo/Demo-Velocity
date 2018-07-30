@@ -22,28 +22,41 @@
     </script>
     <script>
         function sendPostForm() {
+
             var xhttp = new XMLHttpRequest();
             var url = "/restForm";
-            // var itemName = document.forms["restForm"]["name"].value;;
-            // console.log("Item name: " + itemName)
-            // var itemPrice = document.forms["restForm"]["peice"].value;
-            // console.log("Item price: " + itemPrice)
+            var itemName = document.forms["restForm"]["name"].value;
+            var itemPrice = document.forms["restForm"]["price"].value;
+
+            console.log("Item name: " + itemName)
+            console.log("Item price: " + itemPrice)
 
             xhttp.open("PUT", url, true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            // xhttp.setRequestHeader("Content-type", "text/plain");
-            xhttp.send("name=" + "&price=");
+            xhttp.send("name=" + itemName + "&price=" + itemPrice);
             xhttp.onreadystatechange = function () {
+
                 if (this.readyState == 4 && this.status == 200) {
-                    // window.location.href = window.location.href
-                    console.log("Ok")
-                    document.getElementById("responseText").innerHTML = this.responseText;
+                    console.log("Ok");
+                    var element = document.getElementById("responseText");
+                    element.style.display = "none";
+                    document.getElementById("restFormItemName").value = '';
+                    document.getElementById("restFormItemPrice").value = '';
                 }
 
                 if (this.readyState == 4 && this.status == 400) {
-                    // window.location.href = window.location.href
-                    console.log("Error");
-                    document.getElementById("responseText").innerHTML = this.responseText;
+
+                    console.log("Error" + this.responseText);
+
+                    var erroreMessage = "";
+                    var objects = JSON.parse(this.responseText)
+
+                    objects.forEach(function(key, index){
+                        console.log(key.code);
+                        erroreMessage = erroreMessage + '<p>' + key.code + '</p>'
+                    });
+
+                    document.getElementById("responseText").innerHTML = erroreMessage;
                 }
             };
         }
@@ -79,9 +92,9 @@
 </div>
 <div class="col-md-12">
     <div class="row">
-        <p id="responseText"></p>
-        <div>
-            <form name="restForm">
+        <span id="responseText" class="errorsStyle"></span>
+        <div class="col-md-12">
+            <form name="restForm" action="">
                 Name: <input type="text" name="name" id="restFormItemName">
                 Price: <input type="number" name="price" id="restFormItemPrice">
                 <span class="customBtn" onclick="sendPostForm()">Send</span>
