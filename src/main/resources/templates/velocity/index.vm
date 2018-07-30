@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
     <script>
         function validateForm() {
@@ -34,11 +35,13 @@
             xhttp.send("name=" + "&price=");
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
+                    // window.location.href = window.location.href
                     console.log("Ok")
                     document.getElementById("responseText").innerHTML = this.responseText;
                 }
 
                 if (this.readyState == 4 && this.status == 400) {
+                    // window.location.href = window.location.href
                     console.log("Error");
                     document.getElementById("responseText").innerHTML = this.responseText;
                 }
@@ -81,7 +84,7 @@
             <form name="restForm">
                 Name: <input type="text" name="name" id="restFormItemName">
                 Price: <input type="number" name="price" id="restFormItemPrice">
-                <button onclick="sendPostForm()">Send</button>
+                <span class="customBtn" onclick="sendPostForm()">Send</span>
             </form>
         </div>
     </div>
