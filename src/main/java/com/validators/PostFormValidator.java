@@ -36,8 +36,10 @@ public class PostFormValidator implements Validator {
             errors.rejectValue("name", "Name must be longer then 4 characters");
         }
 
-        if(item.getPrice().compareTo(new BigDecimal(3))<0){
-            errors.rejectValue("price", "Price to low");
+        if(item.getPrice() != null) {
+            if (item.getPrice().compareTo(new BigDecimal(3)) < 0) {
+                errors.rejectValue("price", "Price to low");
+            }
         }
 
     }

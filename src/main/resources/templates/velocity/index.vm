@@ -28,8 +28,9 @@
             // var itemPrice = document.forms["restForm"]["peice"].value;
             // console.log("Item price: " + itemPrice)
 
-            xhttp.open("POST", url, true);
+            xhttp.open("PUT", url, true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            // xhttp.setRequestHeader("Content-type", "text/plain");
             xhttp.send("name=" + "&price=");
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
