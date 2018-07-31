@@ -27,13 +27,15 @@
             var url = "/restForm";
             var itemName = document.forms["restForm"]["name"].value;
             var itemPrice = document.forms["restForm"]["price"].value;
+            var sname = document.forms["restForm"]["sname"].value;
 
             console.log("Item name: " + itemName)
             console.log("Item price: " + itemPrice)
+            console.log("Sname: " + sname)
 
             xhttp.open("PUT", url, true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("name=" + itemName + "&price=" + itemPrice);
+            xhttp.send("sname=" + sname + "&name=" + itemName + "&price=" + itemPrice);
             xhttp.onreadystatechange = function () {
 
                 if (this.readyState == 4 && this.status == 200) {
@@ -42,6 +44,7 @@
                     element.style.display = "none";
                     document.getElementById("restFormItemName").value = '';
                     document.getElementById("restFormItemPrice").value = '';
+                    document.getElementById("snameParam").value = '';
                 }
 
                 if (this.readyState == 4 && this.status == 400) {
@@ -97,6 +100,7 @@
             <form name="restForm" action="">
                 Name: <input type="text" name="name" id="restFormItemName">
                 Price: <input type="number" name="price" id="restFormItemPrice">
+                Sname: <input type="text" name="sname" id="snameParam">
                 <span class="customBtn" onclick="sendPostForm()">Send</span>
             </form>
         </div>

@@ -33,17 +33,18 @@ public class MyRestController {
 
     @RequestMapping(value = "/restForm", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
-    public ResponseEntity restPostForm(@Valid Item item,
+    public ResponseEntity restPostForm(@RequestParam("sname") String sname, @Valid Item item,
                                        BindingResult bindingResult) throws NoSuchMethodException, MethodArgumentNotValidException {
         logger.info("post form");
         if(bindingResult.hasErrors()) {
             logger.info("invalid post form");
             throw new MethodArgumentNotValidException(new MethodParameter(this.getClass().getDeclaredMethod("restPostForm",
-                    Item.class, BindingResult.class), 0), bindingResult);
+                    String.class, Item.class, BindingResult.class), 1), bindingResult);
         }
 
         logger.info("Item name: " + item.getName());
         logger.info("Item price: " + item.getPrice());
+        logger.info("Sname: " + sname);
         return ResponseEntity.ok().build();
     }
 }
