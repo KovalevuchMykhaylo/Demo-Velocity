@@ -1,11 +1,12 @@
 package com.grabage;
 
-public class main {
+public class Main {
 
     public static void main(String[] args) {
         double x = 2.5;
         double y = 2.5;
         test(BasicOperations.class, x, y);
+        test(ExtendedOperation.class, x, y);
     }
 
     private static <T extends Enum<T> & Operations> void test(
